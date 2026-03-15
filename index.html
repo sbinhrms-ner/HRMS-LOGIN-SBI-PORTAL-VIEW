@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>SBI HRMS</title>
+
+<style>
+
+body{
+font-family: Arial;
+text-align:center;
+background:#f2f2f2;
+}
+
+h1{
+color:#1a3c8b;
+}
+
+input{
+padding:10px;
+margin:10px;
+width:230px;
+font-size:16px;
+}
+
+button{
+padding:10px 25px;
+margin:10px;
+font-size:16px;
+background:#1a3c8b;
+color:white;
+border:none;
+cursor:pointer;
+}
+
+button:hover{
+background:#0f2760;
+}
+
+#error{
+color:red;
+font-weight:bold;
+}
+
+.blink{
+animation:blink 1s linear infinite;
+}
+
+@keyframes blink{
+50%{opacity:0;}
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- LOGIN PAGE -->
+
+<div id="loginPage">
+
+<img src="logo.png" width="220"><br><br>
+
+<h1>SBI MOBILE HRMS LOGIN</h1>
+
+<input type="text" id="userid" placeholder="USER ID"><br>
+
+<input type="password" id="password" placeholder="PASSWORD"><br>
+
+<div id="error"></div>
+
+<button onclick="login()">LOGIN</button>
+
+</div>
+
+
+<!-- LOADING PAGE -->
+
+<div id="loadingPage" style="display:none">
+
+<img src="logo.png" width="250" class="blink"><br><br>
+
+<h2 style="color:#19a0c8" class="blink">LOADING EMPLOYEE DETAILS</h2>
+
+</div>
+
+
+<!-- EMPLOYEE ID PAGE -->
+
+<div id="idPage" style="display:none">
+
+<img src="id.jpeg" width="700"><br><br>
+
+<button onclick="salary()">SALARY SLIP</button>
+
+<button onclick="logout()">LOGOUT</button>
+
+</div>
+
+
+<!-- SALARY LOADING -->
+
+<div id="salaryLoading" style="display:none">
+
+<img src="logo.png" width="250" class="blink"><br><br>
+
+<h2 style="color:#19a0c8" class="blink">LOADING EMPLOYEE DETAILS</h2>
+
+</div>
+
+
+<!-- SALARY PAGE -->
+
+<div id="salaryPage" style="display:none">
+
+<img src="ss.jpeg" width="700"><br><br>
+
+<button onclick="logout()">LOGOUT</button>
+
+</div>
+
+
+<!-- LOGOUT PAGE -->
+
+<div id="logoutPage" style="display:none">
+
+<h2>SBI HRMS LOGGED OUT</h2>
+
+<br>
+
+<a href="https://onlinesbi.sbi.bank.in/" target="_blank">
+https://onlinesbi.sbi.bank.in/
+</a>
+
+</div>
+
+
+<script>
+
+function login(){
+
+var u=document.getElementById("userid").value;
+var p=document.getElementById("password").value;
+
+if(u=="781253" && p=="sbinnner123"){
+
+document.getElementById("loginPage").style.display="none";
+document.getElementById("loadingPage").style.display="block";
+
+setTimeout(function(){
+
+document.getElementById("loadingPage").style.display="none";
+document.getElementById("idPage").style.display="block";
+
+},3000);
+
+}
+
+else{
+
+document.getElementById("error").innerHTML="WRONG CREDENTIALS";
+
+}
+
+}
+
+
+
+function salary(){
+
+document.getElementById("idPage").style.display="none";
+document.getElementById("salaryLoading").style.display="block";
+
+setTimeout(function(){
+
+document.getElementById("salaryLoading").style.display="none";
+document.getElementById("salaryPage").style.display="block";
+
+},2000);
+
+}
+
+
+
+function logout(){
+
+document.getElementById("loginPage").style.display="none";
+document.getElementById("loadingPage").style.display="none";
+document.getElementById("idPage").style.display="none";
+document.getElementById("salaryPage").style.display="none";
+document.getElementById("salaryLoading").style.display="none";
+
+document.getElementById("logoutPage").style.display="block";
+
+}
+
+</script>
+
+</body>
+</html>
